@@ -1,0 +1,16 @@
+BillingPeriodStart,BillingPeriodEnd,SiteID,SiteName,MeterID,Location,kWh_Used,Unit,Tariff,Supplier
+2024-01-01,2024-01-31,SITE-LON-001,London HQ,MTR-L001,London, United Kingdom,28500,kWh,Business Standard,UK Power Networks
+2024-01-15,2024-02-14,SITE-MAN-001,Manchester Office,MTR-M001,Manchester, United Kingdom,12400,kWh,Business Economy,Electricity North West
+2024-01-01,2024-01-31,SITE-MUN-001,Munich Warehouse,MTR-D001,Munich, Germany,41200,kWh,Industriestrom,Stadtwerke München
+2024-02-01,2024-02-29,SITE-LON-001,London HQ,MTR-L001,London, United Kingdom,26100,kWh,Business Standard,UK Power Networks
+2024-02-15,2024-03-14,SITE-LON-002,London Data Centre,MTR-L002,London, United Kingdom,98400,kWh,High Voltage,UK Power Networks
+2024-02-01,2024-02-29,SITE-MUN-001,Munich Warehouse,MTR-D001,Munich, Germany,38700,kWh,Industriestrom,Stadtwerke München
+2024-03-01,2024-03-31,SITE-LON-001,London HQ,MTR-L001,London, United Kingdom,24800,kWh,Business Standard,UK Power Networks
+2024-03-01,2024-03-31,SITE-MAN-001,Manchester Office,MTR-M001,Manchester, United Kingdom,11900,kWh,Business Economy,Electricity North West
+2024-03-01,2024-03-31,SITE-NY-001,New York Office,MTR-U001,New York, USA,31500,kWh,Con Edison Commercial,Con Edison
+2024-03-15,2024-04-14,SITE-SG-001,Singapore Hub,MTR-S001,Singapore,18700,kWh,Commercial,SP Group
+2024-04-01,2024-04-30,SITE-LON-001,London HQ,MTR-L001,London, United Kingdom,22300,kWh,Business Standard,UK Power Networks
+2024-04-01,2024-04-30,SITE-MUN-001,Munich Warehouse,MTR-D001,Munich, Germany,36100,kWh,Industriestrom,Stadtwerke München
+2024-05-01,2024-05-31,SITE-LON-001,London HQ,MTR-L001,London, United Kingdom,19800,kWh,Business Standard,UK Power Networks
+2024-05-01,2024-05-31,SITE-LON-002,London Data Centre,MTR-L002,London, United Kingdom,95200,kWh,High Voltage,UK Power Networks
+2024-05-01,2024-05-31,SITE-NY-001,New York Office,MTR-U001,New York, USA,29800,kWh,Con Edison Commercial,Con Edison
