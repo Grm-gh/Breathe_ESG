@@ -5,7 +5,6 @@ const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 })
 
-
 export const getDashboard = () => api.get('/dashboard/')
 export const getRecords = (params) => api.get('/records/', { params })
 export const getRecord = (id) => api.get(`/records/${id}/`)
