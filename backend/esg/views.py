@@ -218,15 +218,16 @@ class IngestSAPView(APIView):
         if not file_obj:
             return Response({'error': 'No file uploaded.'}, status=400)
 
-        org = _get_or_create_default_org()
-        log = IngestionLog.objects.create(
-            organization=org,
-            source=IngestionLog.SourceType.SAP,
-            status=IngestionLog.Status.PENDING,
-            raw_file=file_obj,
-        )
-
+        log = None
         try:
+            org = _get_or_create_default_org()
+            log = IngestionLog.objects.create(
+                organization=org,
+                source=IngestionLog.SourceType.SAP,
+                status=IngestionLog.Status.PENDING,
+                raw_file=file_obj,
+            )
+
             file_obj.seek(0)
             parsed = parse_sap_csv(file_obj)
             success, errors, error_details = _persist_parsed_records(parsed, log, org)
@@ -246,10 +247,11 @@ class IngestSAPView(APIView):
             }, status=201)
 
         except Exception as e:
-            log.status = IngestionLog.Status.FAILED
-            log.error_details = [str(e)]
-            log.completed_at = timezone.now()
-            log.save()
+            if log:
+                log.status = IngestionLog.Status.FAILED
+                log.error_details = [str(e)]
+                log.completed_at = timezone.now()
+                log.save()
             return Response({'error': str(e)}, status=500)
 
 
@@ -261,16 +263,17 @@ class IngestUtilityView(APIView):
         if not file_obj:
             return Response({'error': 'No file uploaded.'}, status=400)
 
-        org = _get_or_create_default_org()
-        log = IngestionLog.objects.create(
-            organization=org,
-            source=IngestionLog.SourceType.UTILITY,
-            scope=2,
-            status=IngestionLog.Status.PENDING,
-            raw_file=file_obj,
-        )
-
+        log = None
         try:
+            org = _get_or_create_default_org()
+            log = IngestionLog.objects.create(
+                organization=org,
+                source=IngestionLog.SourceType.UTILITY,
+                scope=2,
+                status=IngestionLog.Status.PENDING,
+                raw_file=file_obj,
+            )
+
             file_obj.seek(0)
             parsed = parse_utility_csv(file_obj)
             success, errors, error_details = _persist_parsed_records(parsed, log, org)
@@ -290,24 +293,26 @@ class IngestUtilityView(APIView):
             }, status=201)
 
         except Exception as e:
-            log.status = IngestionLog.Status.FAILED
-            log.error_details = [str(e)]
-            log.completed_at = timezone.now()
-            log.save()
+            if log:
+                log.status = IngestionLog.Status.FAILED
+                log.error_details = [str(e)]
+                log.completed_at = timezone.now()
+                log.save()
             return Response({'error': str(e)}, status=500)
 
 
 class IngestTravelView(APIView):
     def post(self, request):
-        org = _get_or_create_default_org()
-        log = IngestionLog.objects.create(
-            organization=org,
-            source=IngestionLog.SourceType.TRAVEL,
-            scope=3,
-            status=IngestionLog.Status.PENDING,
-        )
-
+        log = None
         try:
+            org = _get_or_create_default_org()
+            log = IngestionLog.objects.create(
+                organization=org,
+                source=IngestionLog.SourceType.TRAVEL,
+                scope=3,
+                status=IngestionLog.Status.PENDING,
+            )
+
             parsed = parse_travel_json(MOCK_TRAVEL_DATA)
             success, errors, error_details = _persist_parsed_records(parsed, log, org)
 
@@ -327,10 +332,11 @@ class IngestTravelView(APIView):
             }, status=201)
 
         except Exception as e:
-            log.status = IngestionLog.Status.FAILED
-            log.error_details = [str(e)]
-            log.completed_at = timezone.now()
-            log.save()
+            if log:
+                log.status = IngestionLog.Status.FAILED
+                log.error_details = [str(e)]
+                log.completed_at = timezone.now()
+                log.save()
             return Response({'error': str(e)}, status=500)
 
 
