@@ -230,7 +230,7 @@ export default function Dashboard() {
   if (error) return (
     <div className="empty-state">
       <h3>Backend Unavailable</h3>
-      <p>Ensure Django is running at http://localhost:8000</p>
+      <p>Ensure Django is running at {import.meta.env.VITE_API_URL || 'http://localhost:8000'}</p>
     </div>
   )
 
